@@ -2,6 +2,7 @@
 	if ($_SERVER["REQUEST_METHOD"]=="POST")
 	{
 		$connection = mysqli_connect("server42.hosting.reg.ru", "u1960216_default", "X6z7Y08TBcsaxY3I", "u1960216_webprogrammingrsreu");
+		$connection->query("SET NAMES utf8");
 
 		if (!$connection)
 		{
@@ -24,8 +25,8 @@
 		}
 		else
 		{
-			// Если все норм, то заводим куки и перенаправляем на страницу профиля
-		//setcookie('userId', 1, time() + 3600, "/");
+			$user = $result->fetch_assoc();
+		    setcookie('userId', $user['id'], time() + 3600, "/"); //куки на час
 			header('Location: /');
 			$connection->close();
 		}
@@ -51,11 +52,17 @@
                     <input type="password" name="pass" class="form-control" id="pass" placeholder="Пароль"><br>
                     <button class="btn btn-success btn-lg btn-block">Войти</button><br>
 					<?php if (isset($errors['login'])): ?>
-                        <div>
+                        <div class="alert alert-danger" role="alert">
                             <?= $errors['login'] ?>
                         </div>
 						<?php endif; ?>
                 </form>
+				<div class="container row">
+					<h3>
+						Впервые здесь?
+						<button type="button" onclick="location.href='register.php'" class="btn btn-link">Регистрация</button>
+					</h3>
+				</div>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@
     }
     else
     {
+        
         header('Location: schedule.php');
     }
 ?>
