@@ -20,11 +20,51 @@
                 Главная
             </a>
             <form class="form-inline my-2 my-lg-0" action="exit.php">
-                <input class="form-control mr-sm-2" type="search" placeholder="Поиск..." aria-label="Search">
                 <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Выйти</button>
             </form>
         </nav>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">8:10 - 9:45</th>
+                    <th scope="col">9:55 - 11:30</th>
+                    <th scope="col">11:40 - 13:15</th>
+                    <th scope="col">13:35 - 15:10</th>
+                </tr>
+            </thead>
+        <tbody>
+            <tr>
+            <th scope="row">Понедельник</th>
+            <td>
+                <table class="table table-borderless">
+                    <tr><td>числ. Программирование<br> Лекция</td></tr>
+                    <tr><td>знам. Математика</td></tr>
+                </table>
+            </td>
+
+
+            <td>Otto</td>
+            <td>@mdo</td>
+            </tr>
+
+            
+            <tr>
+            <th scope="row">Вторник</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@TwBootstrap</td>
+            </tr>
+
+        </tbody>
+</table>
+
     </div>
+
+
+    
+    
     
     
     
