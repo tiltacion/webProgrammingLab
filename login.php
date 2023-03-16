@@ -42,7 +42,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>Вход</title>
 </head>
-<body>  
+<body onload="checkCookieOnLoginPage()">  
     <div class="container mt-4 col-4">
         <div class="row">
             <div class="col">
@@ -66,5 +66,8 @@
             </div>
         </div>
     </div>
+
+
+	<script src="scripts/checkCookie.js"></script>
 </body>
 </html>
