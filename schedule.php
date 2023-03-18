@@ -11,7 +11,7 @@
 
     <title>Расписание</title>
   </head>
-  <body onload="checkCookieOnSchedulePage()">
+  <body onload="checkCookieOnPage('login', true)">
     <div class="container">
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="schedule.php">
