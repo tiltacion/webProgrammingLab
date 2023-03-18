@@ -6,6 +6,15 @@
      {
          die("Ошибка подключения: " . mysqli_connect_error());
      }
+     $userId = mysqli_real_escape_string($connection, $_COOKIE['userId']);
+	
+		$result = $connection->query("SELECT Role FROM `users` WHERE `id` = '$userId'");
+        $roleId = $result->fetch_assoc()['Role'];
+
+        if (!isset($roleId) || $roleId == 0)
+        {
+            header('Location: /');
+        }
  
      $result = $connection->query("SELECT * FROM `ClassTime`");
 
@@ -50,7 +59,7 @@
         <div class="row">
             <div class="col">
                 <h1 class="d-flex justify-content-center">Добавление предмета в расписание</h1>
-<form name="form">
+<form name="form" action="addSubjectToSchelude.php" method="post">
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Название дисциплины</label>
             <div class="col-sm-4">
@@ -122,6 +131,7 @@
         <input type="date" name="end"/>
             </div>
         </div>
+        <button type="submit">wd</button>
         </form>
         </div>
         </div>

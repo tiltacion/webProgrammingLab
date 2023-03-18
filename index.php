@@ -17,15 +17,18 @@
 	
 		$result = $connection->query("SELECT Role FROM `users` WHERE `id` = '$userId'");
         $roleId = $result->fetch_assoc()['Role'];
-
-        if (!isset($roleId) || $roleId == 0)
+        if (!isset($roleId))
         {
             header('Location: schedule.php');
         }
         else
         {
-            header('Location: adminPage.php');
-        }
-        
+            if ($roleId == 0) {
+                header('Location: schedule.php');
+            }
+            else {
+                header('Location: adminPage.php');
+            }
+        }        
     }
 ?>
