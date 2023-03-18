@@ -1,4 +1,29 @@
-<?php ?>
+<?php 
+    if (!isset($_COOKIE['userId']))
+    {
+        header('Location: login.php');
+    }
+    else
+    {
+        $connection = mysqli_connect("server42.hosting.reg.ru", "u1960216_default", "X6z7Y08TBcsaxY3I", "u1960216_webprogrammingrsreu");
+		$connection->query("SET NAMES utf8");
+
+		if (!$connection)
+		{
+			die("Ошибка подключения: " . mysqli_connect_error());
+		}
+	
+		$userId = mysqli_real_escape_string($connection, $_COOKIE['userId']);
+	
+		$result = $connection->query("SELECT Role FROM `users` WHERE `id` = '$userId'");
+        $roleId = $result->fetch_assoc()['Role'];
+
+        if (!isset($roleId) || $roleId == 0)
+        {
+            header('Location: /');
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +45,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="adminPageAdd.php">Добавление<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="adminPageAdd.php">Добавление предмета в расписание<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="adminPageAdd.php">Добавление предмета<span class="sr-only">(current)</span></a>

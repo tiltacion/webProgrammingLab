@@ -1,4 +1,9 @@
 <?php
+if (isset($_COOKIE['userId']) == 1)
+{
+	header('Location: /');
+}
+
 	if ($_SERVER["REQUEST_METHOD"]=="POST")
 	{
 		$connection = mysqli_connect("server42.hosting.reg.ru", "u1960216_default", "X6z7Y08TBcsaxY3I", "u1960216_webprogrammingrsreu");
@@ -8,6 +13,15 @@
 		{
 			die("Ошибка подключения: " . mysqli_connect_error());
 		}
+
+		$userId = mysqli_real_escape_string($connection, $_COOKIE['userId']);
+	
+		$result = $connection->query("SELECT Role FROM `users` WHERE `id` = '$userId'");
+        $roleId = $result->fetch_assoc()['Role'];
+        if (!isset($roleId) || $roleId == 0)
+        {
+            header('Location: /');
+        }
 	
 		$login = mysqli_real_escape_string($connection, $_POST["login"]);
 		$pass = mysqli_real_escape_string($connection, $_POST["pass"]);
@@ -42,7 +56,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>Вход</title>
 </head>
-<body onload="checkCookieOnPage('schedule', false)">  
+<body>  
     <div class="container mt-4 col-4">
         <div class="row">
             <div class="col">
